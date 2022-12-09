@@ -23,8 +23,8 @@ public class LibraryController {
     @GetMapping("/artists")
     public Object getArtists(HttpServletRequest req) {
 
-        boolean hasNamesOnly = "true".equals(req.getParameter("namesOnly"));
-            if (hasNamesOnly) {
+        boolean namesOnly = "true".equals(req.getParameter("namesOnly"));
+            if (namesOnly) {
                 return libraryService.getArtistsNamesOnly();
             }
             return libraryService.getArtists();
