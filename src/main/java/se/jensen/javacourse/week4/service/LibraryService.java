@@ -108,11 +108,15 @@ public class LibraryService
     /** Deletes an existing track of a specific artist
      *  and returns 0 if no errors.
      * If no artist exists with that id, returns -2.
-     * If no track exists with that id, returns -3. */
+     * If no track exists with that id, returns -1. */
     public int deleteTrack(Integer artistId, Integer trackId)
     {
         Artist artist = db.readArtistById(artistId);
+        Track track = db.readTracks().get(trackId);
+
         if (artist == null) return -2;
+
+        if (track == null) return -1;
     
         int res = artist.deleteTrack(trackId);
         if (res == 0)
